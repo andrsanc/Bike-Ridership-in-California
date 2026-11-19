@@ -1,14 +1,15 @@
 # 🚲 A Study of 5 Years of Bike-Share Ridership in California (2022 – 2026)
 
-
-![Python](./pictures/Figure_1.png)
-![Python](./pictures/Figure_19.png)
-![Python](./pictures/Figure_30.png)
-![Python](./pictures/Figure_37.png)
-
 > **How do Californians ride, and how does that differ from one region to the next?**
 > This project works through five years of bike-share trip data to uncover seasonal rhythms, regional differences, and the factors that drive ridership, using a full toolkit of classical and Bayesian statistical inference.
 
+Time Series                |  Bootstrapping
+:-------------------------:|:-------------------------:
+![](./pictures/Figure_1.png)  |  ![](./pictures/Figure_19.png)
+
+Generalized Linear Model   |  Markov Chain Monte Carlo 
+:-------------------------:|:-------------------------:
+![](./pictures/Figure_30.png)  |  ![](./pictures/Figure_37.png)
 ---
 
 ## 📖 Overview
@@ -106,11 +107,14 @@ Open the notebook and run the cells from top to bottom.
 
 ## 💡 Key Takeaways
 
-> *Fill in your headline findings here, for example:*
+> *This analysis used six complementary statistical approaches to understand California bike-share usage. Using several modeling frameworks let each outcome be matched to a distribution that fit its structure, and the diagnostics showed where each model was adequate and where it fell short.*
 >
-> - Ridership shows a clear seasonal pattern, with differences between regions.
-> - Negative Binomial fit trip counts better than Poisson because of overdispersion.
-> - Bootstrapped and Bayesian intervals largely agree with the classical estimates, which supports the robustness of the main effects.
+> - **Ridership is growing quickly**. By 2026, ridership was roughly double the 2022 baseline, with demand peaking in the PM commute block and bottoming out overnight.
+> - **The July dip is not a San Francisco story**. We hypothesized that SF’s foggy summers drove the decline, but the bootstrap showed that nearly every region fell from June to July, and North Hollywood fell the most (39%) while San Francisco fell 19%. The decline is statewide, though without weather data we cannot identify its cause.
+> - **Special events drive the outliers**. CicLAvia street closures, New Year’s night, and Día de los Muertos accounted for many of the most influential observations. Labeling local events in the data would likely improve future models.
+> - **Who rides, and on what, shapes how they ride**. Members take shorter, faster trips that stay closer to their origin, while casual riders and holiday riders go longer and farther. Electric bikes are about 21% faster than standard bikes.
+> - **Round trips depend on the combination of bike and rider type**. Casual users on standard bikes had about 5.6 times the odds of a round trip compared with casual users on electric bikes, while for members the pattern reversed. Overall, round trips were only about 11% of trips.
+> - **Popular station pairs behave very differently by region**. The 2026 posterior probability of a rider returning a bike to the paired station ranged from 8.6% in San Francisco to 53.7% in North Hollywood, and it has been trending in different directions across regions.
 
 ---
 
