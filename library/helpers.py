@@ -237,30 +237,8 @@ def station_to_station_fun(df, region, top_n):
     df = df.head(top_n).reset_index(drop = True)  
     return df
 
-# # Function to plot the most popular station to station routes
-# def station_to_station_plot_fun(df, num_cols, num_rows, w, h):
-#     df['plot_lat'] = (df['start_lat'] + df['end_lat']) / 2
-#     df['plot_lon'] = (df['start_lon'] + df['end_lon']) / 2
-#     top_n = df.shape[0]
-#     #region = df['plot_region'].iloc[0]
-#     region = ', '.join(sorted(set(df['plot_region'])))
-#     print('Top ' + str(top_n) + ' Station-to-Station Routes in ' + region + '\n')
-#     # Plot
-#     fig = Figure(width = w, height = h)
-#     for i, row in enumerate(df.itertuples(), start = 1):
-#         m = folium.Map(location = [row.plot_lat, row.plot_lon],
-#                        zoom_start = 13)
-#         line = folium.PolyLine(locations=[[row.start_lat, row.start_lon], [row.end_lat, row.end_lon]],
-#                                color = 'blue', 
-#                                weight = 5, opacity = 0.8).add_to(m)
-#         PolyLineTextPath(line, '►', 
-#                          repeat = True, 
-#                          attributes = {'font-size': '18'}).add_to(m)
-#         fig.add_subplot(num_rows, num_cols, i).add_child(m)    
-#     return fig
-
 # Function to plot the most popular station to station routes
-def station_to_station_plot_fun(df, num_cols, num_rows, w, h):
+def station_to_station_plot_fun(df, num_cols, num_rows, w, h, z):
     top_n = df.shape[0]
     region = ', '.join(sorted(set(df['plot_region'])))
     print('Top ' + str(top_n) + ' Station-to-Station Routes in ' + region + '\n')
@@ -272,7 +250,7 @@ def station_to_station_plot_fun(df, num_cols, num_rows, w, h):
         end = [row.end_lat, row.end_lon]
 
         m = folium.Map(location = [(start[0] + end[0]) / 2, (start[1] + end[1]) / 2],
-                       zoom_start = 13,
+                       zoom_start = z,
                        width = cell_w, height = cell_h)
         line = folium.PolyLine([start, end],
                                color = 'blue',

@@ -82,24 +82,37 @@ micromamba create -f inference.yml
 micromamba activate inference
 ```
 
+### Test the environment
+
+```jupyter lab
+use_raw_data = False
+```
+
+Set the use of raw data to False and run the cells in both notebooks (Data preparation and Main analysis) from top to bottom.
+
+
 ### Run the notebook
 
 ```bash
-jupyter lab
+use_raw_data = True
 ```
 
-Open the notebook and run the cells from top to bottom.
+Once the environment has been tested, download raw files (*see References*) and save them in the appropiate folders, set the use of raw data to True and run the cells in both notebooks (Data preparation and Main analysis) from top to bottom.
 
 ---
 
 ## 📁 Repository Structure
 
 ```
-├── pictures/            # Figures used in this README and the notebook
-├── library/             # Helper functions and custom CSS styling for the notebook
-├── sample_data/         # Sample datasets (100 observations per file) for testing the environment
-├── <notebook>.ipynb     # Main analysis notebook
-├── inference.yml        # Python dependencies
+├── pictures/                           # Figures used in this README and the notebook
+├── library/                            # Helper functions and custom CSS styling for the notebook
+├── data/                               # Location of bike station files and Bay Area County polygons
+├── data/sample/                        # Sample datasets for testing the environment; each file contains just 10 observations per day
+├── data/raw/northern                   # Empty folder for Northern California files
+├── data/raw/southern                   # Empty folder for Southern California files 
+├── Bike_Ridership_Data_Prep.ipynb      # Data preparation notebook
+├── Bike_Ridership_Analysis.ipynb       # Main analysis notebook
+├── inference.yml                       # Python dependencies
 └── README.md
 ```
 
